@@ -1,0 +1,51 @@
+
+
+<div class="testimonials-area ptb-100">
+    <div class="container">
+        <div class="section-title" *ngIf="!(authService.isOrganiser$ | async) && (authService.isLoggedIng$|async)==true">
+            <div class="header-par">
+                <h3>Искаме да знаем какво мислиш...</h3>
+            </div>
+        </div>
+
+        <div class="container" *ngIf="!(authService.isOrganiser$ | async) && (authService.isLoggedIng$|async)==true">
+ 
+            <div class="input-container" >
+                <div class="input">
+                    <div class="inputbox">
+                        <div class="form-group" [formGroup]="formData">
+                            <textarea type="text" class="reviewinp" placeholder="Напиши своя коментар тук..." formControlName="review" id="review" (change)="getReview($event)"></textarea>
+                        </div>
+                    </div>
+                    <div class="submitbtn">
+                        <button class="submit" (click)="sendReview()">Публикувай</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="comments">  
+            <div class="section-title">
+                <div class="bar ms-auto me-auto"></div>
+                <p class="ms-auto me-auto">Последни коментари:</p>
+            </div>
+    
+    
+            <div class="testimonials-slides" *ngFor="let comment of comments">
+                <div class="testimonials-item carouselSlide">
+                    <div class="content">
+                        <h4>{{comment.userName}}</h4>
+                    </div>
+                    <p>{{comment.comment}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="comments && comments.length==0">
+            <div class="section-title">
+                <div class="bar ms-auto me-auto"></div>
+                <p class="ms-auto me-auto">Все още няма добавени коментари.</p>
+            </div>
+        </div>
+    </div>
+</div>

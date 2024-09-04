@@ -1,0 +1,93 @@
+.faq-accordion {
+    .box {
+        padding: 40px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        background-color: var(--whiteColor);
+        box-shadow: 0px 0px 59px 31px rgba(0, 0, 0, 0.04);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    h3 {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    strong {
+        color: var(--blackColor) !important;
+    }
+    p {
+        color: var(--paragraphColor);
+
+        a {
+            color: var(--primaryColor);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    ul, ol {
+        li {
+            margin-bottom: 12px;
+            color: var(--paragraphColor);
+
+            a {
+                color: var(--primaryColor);
+    
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .faq-accordion {
+        .box {
+            padding: 20px;
+        }
+        h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .faq-accordion {
+        .box {
+            padding: 30px;
+        }
+        h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

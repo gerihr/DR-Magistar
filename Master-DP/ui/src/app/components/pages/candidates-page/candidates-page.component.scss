@@ -1,0 +1,435 @@
+.banner-form {
+    background-color: var(--whiteColor);
+    border-radius: 5px;
+    max-width: 800px;
+    padding: 10px;
+    margin: {
+        top: 30px;
+        left: auto;
+        right: auto;
+    };
+    .form-group {
+        position: relative;
+        margin-bottom: 0;
+
+        i {
+            top: 50%;
+            left: 8px;
+            font-size: 20px;
+            position: absolute;
+            color: var(--primaryColor);
+            transform: translateY(-50%);
+        }
+        .form-control {
+            background-color: var(--whiteColor);
+            font-size: var(--fontSize);
+            color: var(--blackColor);
+            border-radius: 3px;
+            position: relative;
+            box-shadow: unset;
+            height: 50px;
+            border: none;
+            width: 100%;
+            padding: {
+                left: 38px;
+                right: 15px;
+            };
+            &::placeholder {
+                color: var(--paragraphColor);
+                transition: var(--transition);
+            }
+            &:focus {
+                &::placeholder {
+                    color: transparent;
+                }
+            }
+        }
+    }
+    .col-lg-5 {
+        border-right: 1px solid #eeeeee;
+    }
+    .submit-btn {
+        width: 100%;
+        border: none;
+        outline: none;
+        display: block;
+        border-radius: 5px;
+        text-align: center;
+        padding: 13px 20px;
+        color: var(--whiteColor);
+        transition: var(--transition);
+        background-color: var(--primaryColor);
+        font: {
+            size: var(--fontSize);
+            weight: 500;
+        };
+        &:hover {
+            background-color: var(--secondaryColor);
+        }
+    }
+}
+.jend-grid-sorting {
+    margin-bottom: 35px;
+
+    .ordering-industries {
+        label {
+            display: inline-block;
+            color: var(--blackColor);
+            margin: {
+                bottom: 0;
+                right: 5px;
+            };
+        }
+        select {
+            height: 45px;
+            width: 230px;
+            cursor: pointer;
+            line-height: 45px;
+            padding: 0 0 0 10px;
+            background: #f8f8f8;
+            display: inline-block;
+            border-color: #eeeeee;
+            color: var(--blackColor);
+            transition: var(--transition);
+            font: {
+                size: var(--fontSize);
+                weight: 500;
+            };
+            &:hover {
+                border-color: var(--primaryColor);
+                background-color: transparent;
+            }
+        }
+    }
+    .result-count {
+        text-align: center;
+        
+        p {
+            color: var(--blackColor);
+            line-height: initial;
+            font: {
+                size: 18px;
+                weight: 500;
+            };
+        }
+    }
+    .ordering {
+        text-align: end;
+
+        label {
+            display: inline-block;
+            color: var(--blackColor);
+            margin: {
+                bottom: 0;
+                right: 5px;
+            };
+        }
+        select {
+            height: 45px;
+            width: 215px;
+            cursor: pointer;
+            line-height: 45px;
+            padding: 0 0 0 10px;
+            background: #f8f8f8;
+            display: inline-block;
+            border-color: #eeeeee;
+            color: var(--blackColor);
+            transition: var(--transition);
+            font: {
+                size: var(--fontSize);
+                weight: 500;
+            };
+            &:hover {
+                border-color: var(--primaryColor);
+                background-color: transparent;
+            }
+        }
+    }
+}
+.candidate-card {
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 25px;
+    transition: var(--transition);
+    background-color: var(--whiteColor);
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 10px 36px 0px, rgba(0, 0, 0, 0.03) 0px 0px 0px 1px;
+
+    a {
+        img {
+            max-width: 90px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid var(--primaryColor);
+        }
+    }
+    .title {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+        display: flex;
+
+        h3 {
+            font-size: 22px;
+            margin-bottom: 0;
+        }
+        img {
+            width: 40px;
+            margin-left: 15px;
+            border-radius: 5px;
+        }
+    }
+    p {
+        margin-bottom: 8px;
+    }
+    .rating {
+        i {
+            line-height: 1;
+            font-size: 18px;
+            color: #fea014;
+            display: inline-block;
+            margin: {
+                left: 2px;
+                right: 2px;
+            };
+        }
+    }
+    .sub-title {
+        display: flex;
+        margin-top: 10px;
+        align-items: center;
+        justify-content: space-between;
+
+        span {
+            color: var(--paragraphColor);
+
+            b {
+                color: var(--blackColor);
+                font: {
+                    size: 18px;
+                    weight: 500;
+                };
+            }
+        }
+    }
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.10) 0px 10px 36px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 1px;
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .banner-form {
+        padding: 0 10px 10px;
+        margin-top: 20px;
+        max-width: 100%;
+
+        .form-group {
+            i {
+                left: 8px;
+                font-size: 15px;
+            }
+            .form-control {
+                font-size: 14px;
+                padding: {
+                    left: 30px;
+                    right: 12px;
+                };
+            }
+        }
+        .col-lg-5 {
+            border: {
+                right: none;
+                bottom: 1px solid #eeeeee;
+            };
+        }
+        .submit-btn {
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+    }
+    .jend-grid-sorting {
+        text-align: center;
+        margin-bottom: 30px;
+
+        .ordering-industries {
+            text-align: center;
+            margin-bottom: 15px;
+
+            select {
+                padding: 0 0 0 8px;
+                line-height: 45px;
+                font-size: 14px;
+                width: 190px;
+                height: 45px;
+            }
+        }
+        .result-count {
+            p {
+                font-size: 14px;
+            }
+        }
+        .ordering {
+            text-align: center;
+            margin-top: 15px;
+
+            select {
+                padding: 0 0 0 8px;
+                line-height: 45px;
+                font-size: 14px;
+                width: 190px;
+                height: 45px;
+            }
+        }
+    }
+    .candidate-card {
+        padding: 20px 15px;
+    
+        .title {
+            margin-bottom: 5px;
+    
+            h3 {
+                font-size: 18px;
+            }
+            img {
+                width: 35px;
+                margin-left: 10px;
+            }
+        }
+        p {
+            margin-bottom: 8px;
+        }
+        .rating {
+            i {
+                font-size: 16px;
+            }
+        }
+        .sub-title {
+            margin-top: 8px;
+    
+            span {
+                b {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+    
+    .banner-content {
+        .banner-form {
+            padding: 8px;
+            max-width: 100%;
+            margin-top: 25px;
+
+            .form-group {
+                i {
+                    left: 8px;
+                    font-size: 18px;
+                }
+                .form-control {
+                    font-size: 15px;
+                    padding: {
+                        left: 35px;
+                        right: 15px;
+                    };
+                }
+            }
+            .submit-btn {
+                font-size: 15px;
+            }
+        }
+    }
+    .jend-grid-sorting {
+        margin-bottom: 30px;
+    
+        .ordering-industries {
+            label {
+                display: block;
+                margin: {
+                    right: 0;
+                    bottom: 10px;
+                };
+            }
+            select {
+                font-size: 15px;
+            }
+        }
+        .result-count {
+            p {
+                font-size: 16px;
+            }
+        }
+        .ordering {
+            label {
+                display: block;
+                margin: {
+                    right: 0;
+                    bottom: 10px;
+                };
+            }
+            select {
+                font-size: 15px;
+            }
+        }
+    }
+    .candidate-card {
+        padding: 25px 20px;
+    
+        .title {
+            h3 {
+                font-size: 20px;
+            }
+        }
+        .sub-title {
+            span {
+                b {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+    .jend-grid-sorting {
+        .ordering-industries {
+            select {
+                width: 210px;
+            }
+        }
+        .result-count {
+            p {
+                font-size: 17px;
+            }
+        }
+    }
+    .candidate-card {
+        padding: 25px 20px;
+    
+        .sub-title {
+            span {
+                b {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

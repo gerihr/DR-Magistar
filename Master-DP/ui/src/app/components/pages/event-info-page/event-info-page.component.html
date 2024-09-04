@@ -1,0 +1,191 @@
+<!-- Page Title -->
+<div class="inner-banner" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
+        <div class="inner-title text-center">
+            <h3>Добави събитие</h3>
+        </div>
+    </div>
+</div>
+<!-- Post A Job -->
+<div class="post-a-job-area ptb-100" *ngIf="clickedButton==false && clickedButtonToPayment==false">
+    <div class="container">
+        <div class="post-a-job-form">
+
+            <form [formGroup]="formData">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label>Заглавие <span>*</span></label>
+                            <input type="text" class="form-control" placeholder="Заглавие" formControlName="header" id="telephone">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Вход цена<span>*</span></label>
+                            <input type="text" class="form-control" placeholder="Цена в лв." formControlName="price">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Брой налични билети<span>*</span></label>
+                            <input type="number" class="form-control" placeholder="Брой билети" formControlName="ticketsInStock">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Категория <span>*</span></label>
+                            <select class="form-select" formControlName="category">
+                                <option value="" disabled selected>Избери Категория</option>
+                                <option *ngFor="let category of enumsService.categories$ | async" value="{{category.id}}">{{category.category}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Подкатегория <span>*</span></label>
+                            <select class="form-select" formControlName="type" [disabled]="formData.controls.category==''">
+                                <option value="" disabled selected>Избери Подкатегория</option>
+                                <option *ngFor="let type of getFilteredTypes()" value="{{type.id}}">{{type.type}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Населено място<span>*</span></label>
+                            <select class="form-select" formControlName="location">
+                                <option value="" disabled selected>Населено място</option>
+                                <option *ngFor="let city of this.enumsService.getCities()" value="{{city.name}}">{{city.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Къде? <span>*</span></label>
+                            <input type="text" class="form-control" (blur)="getCoordinates()" placeholder="Адрес" formControlName="address" id="telephone">
+                        </div>
+                    </div>
+                    <div *ngIf="placesList" style="margin-bottom: 10px;">
+                        <label>Моля, изберете точния адрес</label>
+                        <mat-selection-list multiple="false">
+                            <mat-list-option *ngFor="let place of placesList" (selectedChange)="setCoordinates(place)">
+                              {{place.properties.address_line2}}
+                            </mat-list-option>
+                          </mat-selection-list>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Дата на събитието <span>*</span></label>
+                            <div class="calendar-wrapper">
+                                <input type="text" class="form-control" placeholder="Изберете дата на събитието"  [value]="selected | date: 'dd/MM/yyyy'" id="experience">
+                                <mat-icon type="button" (click)="showHideCal()">calendar_today</mat-icon>
+                            </div>
+                            <div *ngIf="calendarShowed">
+                                <mat-card class="calendar-card">
+                                    <mat-calendar [minDate]="minDate" (selectedChange)="chosenDate($event)" [(selected)]="selected"></mat-calendar>
+                                  </mat-card>
+                            </div>
+                           
+                         
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group" *ngIf="formData.controls.time.value!==''">
+                            <label>Час <span>*</span></label>
+                            <div class="calendar-wrapper">
+                                <input class="form-control" readonly placeholder="Начален час на събитието" formControlName="time" >
+                                <mat-icon type="button" (click)="showHideHourPicker()">access_time</mat-icon>
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf="formData.controls.time.value==''">
+                            <label>Час <span>*</span></label>
+                            <input  [ngxMatTimepicker]="picker" [format]="24" class="form-control" placeholder="Кликнете, за да изберете час" formControlName="time" >
+                            <ngx-mat-timepicker  #picker></ngx-mat-timepicker>  
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                            <label>Описание <span>*</span></label>
+                            <div class="NgxEditor__Wrapper">
+                                <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+                                </ngx-editor-menu>
+                                <ngx-editor [editor]="editor" [placeholder]="'Type here...'" formControlName="description"></ngx-editor>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                    <label>Качете снимка за събитието<span>*</span></label>
+                    <app-file-upload [currentImg]="currentImage" (setCurrentImageEvent)="setCurrentImage($event)"></app-file-upload>
+                    <p>Максимален размер на файл: 2 MB</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <button type="submit" class="default-btn" (click)="nextButton()">Продължи</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Trainer Details -->
+<div class="candidate-details-area pt-100 pb-sm-45" *ngIf="clickedButton==true && clickedButtonToPayment==false">
+    <div class="container" style="margin-bottom: 50px;">
+        <img [src]="currentImage" style="width: 100%;" />
+    </div>
+    <div class="container" style="display: flex; flex-direction: row;">
+        <div class="col-lg-3 col-md-12">
+            <div class="candidate-details-sidebar">
+                <div class="info">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li>
+                            <span>Категория</span>
+                            <a>{{selectedType()}}</a>
+                        </li>
+                        <li>
+                            <span><mat-icon> pin_drop</mat-icon></span>
+                            <a href="https://www.google.bg/maps/place/Sofia/@42.6953468,23.1838624,11z/data=!3m1!4b1!4m6!3m5!1s0x40aa8682cb317bf5:0x400a01269bf5e60!8m2!3d42.6977082!4d23.3218675!16zL20vMGZ0ang?hl=en&authuser=0"
+                               target="_blank">{{formData.controls.location.value}}, {{formData.controls.address.value}}</a>
+                        </li>
+                        <li>
+                            <span><mat-icon>calendar_today</mat-icon></span>
+                            <a>{{formData.controls.date.value | date: 'dd/MM/yyyy'}}</a>
+                        </li>
+                        <li>
+                            <span><mat-icon>access_time</mat-icon></span>
+                            <a>{{formData.controls.time.value}}</a>
+                        </li>
+                        <li>
+                            <span>Цена вход: </span>
+                            <a>{{formData.controls.price.value}} BGN</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-12"></div>
+        <div class="col-lg-8 col-md-12">
+            <div class="candidate-details-desc">
+                <h4>Описание</h4>
+                <div [innerHTML]="this.formData.controls.description.value | htmldecoder"></div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="button-wrapper" *ngIf="clickedButton==true">
+    <div class="col-lg-3 col-md-3 ">
+        <button type="submit" class="submit-btn" (click)="goBackToEdit()">Върни се и редактирай</button>
+    </div>
+    <div class="col-lg-3 col-md-3 " *ngIf="clickedButton==true">
+        <button type="submit" class="submit-btn" (click)="continue()">Продължи</button>
+    </div>
+</div>
+
+

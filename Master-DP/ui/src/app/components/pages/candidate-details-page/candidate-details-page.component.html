@@ -1,0 +1,149 @@
+<div *ngIf="eventData">
+<!-- Page Title -->
+<div class="inner-banner event-banner"  [ngStyle]="{'background': ' url(' + imageUrl  + ') no-repeat 0 0'}">
+    <div class="container">
+        <div class="inner-title text-center">
+            <h3>{{eventData.header}}</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Trainer Details -->
+<div class="candidate-details-area pt-100 pb-sm-45">
+    <div class="container">
+        <div class="row" style="justify-content: center">
+            <div class="col-lg-3 col-md-12">
+                <div class="candidate-details-sidebar">
+                    <div class="info">
+                        <h3>Информация</h3>
+                        <ul>
+                            <li>
+                                <span>Категория</span>
+                                <a>{{getTypeName()}}</a>
+                            </li>
+                            <li>
+                                <span><mat-icon> pin_drop</mat-icon></span>
+                                <a href="https://www.google.bg/maps/place/Sofia/@42.6953468,23.1838624,11z/data=!3m1!4b1!4m6!3m5!1s0x40aa8682cb317bf5:0x400a01269bf5e60!8m2!3d42.6977082!4d23.3218675!16zL20vMGZ0ang?hl=en&authuser=0"
+                                   target="_blank">{{eventData.location}}, {{eventData.address}}</a>
+                            </li>
+                            <li>
+                                <span><mat-icon>calendar_today</mat-icon></span>
+                                <a>{{eventData.date | date: 'dd/MM/yyyy'}}</a>
+                            </li>
+                            <li>
+                                <span><mat-icon>access_time</mat-icon></span>
+                                <a>{{eventData.time}}</a>
+                            </li>
+                            <li>
+                                <span>Цена вход: </span>
+                                <a>{{eventData.price}} BGN</a>
+                            </li>
+                        </ul>
+
+                        <div *ngIf="(authService.isOrganiser$ | async) && eventData.organiserId==authService.getUserId()">
+                            <button class="submit-btn" style="margin-top: 10px;" (click)="editEvent(eventData.id)">Редактирай</button>
+                            <button class="submit-btn" style="margin-top: 10px;" (click)="deleteEvent(eventData.id)">Изтрии</button>  
+                            <button class="submit-btn" style="margin-top: 10px;" (click)="getAnalys(eventData.id)">Покажи анализ</button>    
+                            <button class="submit-btn" style="margin-top: 10px;" (click)="getTicketList(eventData)">Покажи списък с билети</button>    
+                        </div>
+
+                        <div  *ngIf="!(authService.isOrganiser$ | async) && (authService.isLoggedIng$|async)==true">
+                            <button class="submit-btn dark-btn flex" *ngIf="eventService.isEventSaved(eventData.id)" (click)="removeSavedEvent(eventData)"> Не се интересувам<mat-icon>turned_in</mat-icon></button>
+                            <button class="submit-btn flex" *ngIf="!eventService.isEventSaved(eventData.id)" (click)="saveRemovedEvent(eventData)"> Интересувам се <mat-icon>turned_in_not</mat-icon></button>
+                            <button class="submit-btn flex" (click)="openPaymentDialog()"> Купи билет <mat-icon>inbox</mat-icon>
+                            </button>
+                        </div>
+    
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="candidate-details-desc">
+                    <h4>Описание</h4>
+                    <div [innerHTML]="this.eventData.description | htmldecoder"></div>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12" *ngIf="!(authService.isOrganiser$ | async)">
+                <!-- <div class="other-candidates-list">
+                    <h3>Други събития</h3>
+                    <ul class="candidates-list">
+                        <li>
+                            <img src="assets/images/candidates/candidate1.jpg" alt="candidate-image">
+                            <h4>
+                                <a routerLink="/candidate-details">
+                                    Liam Noah
+                                </a>
+                            </h4>
+                            <p>Developer</p>
+                            <div class="rating">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<app-write-a-review [eventId]="eventId" [comments]="eventData.comments"></app-write-a-review>
+
+</div>
+
+<ng-template #paymentDialog>
+    <mat-dialog-content>
+        <div>
+            <section>
+                <div class="container">
+                  <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12">
+                      <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                        <div class="card-body p-0">
+                          <div class="row g-0">
+                              <div class="p-5">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <h2 class="fw-bold mb-0">Купи билет за {{eventData.header}}</h2>
+                                </div>
+                                <hr class="my-4">
+              
+                                <div class="row mb-8 d-flex align-items-center">
+                                  <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <img
+                                      [src]=imageUrl
+                                      class="img-fluid rounded-3" alt="Cotton T-shirt">
+
+                                  </div>
+                                  <div class="col-md-3 col-lg-3 col-xl-3 d-flex">
+                                    <select class="form-select" [formControl]="numberTickets" >
+                                        <option *ngFor="let i of numbers" value="{{i}}">{{i}}</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-2 col-lg-3 col-xl-3">
+                                    <h6> {{eventData.price}} лв. </h6>
+                                  </div>
+                                </div>
+                                <div class=" bg-body-tertiary">
+                                    <hr class="my-4">
+                                    <div class="d-flex justify-content-between mb-4">
+                                      <h5 class="text-uppercase">Обща сума </h5>
+                                      <h5>{{getSumForPayment()}}  лв.</h5>
+                                    </div>
+                                    <button class="submit-btn flex" (click)="goToPayment()" mat-dialog-close> Потвърди</button>
+                                </div>
+                              </div>
+                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+      </div>
+    </mat-dialog-content>
+  </ng-template>

@@ -1,0 +1,16 @@
+@import "../components/pages/candidate-details-page/candidate-details-page.component.scss";
+
+.flex{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-top: 20px;
+  padding: 20px;
+}
+.other-candidates-list{
+  max-width: 400px;
+
+  img{
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,213 @@
+<!-- Page Title -->
+<div class="inner-banner">
+    <div class="container">
+        <div class="inner-title text-center">
+            <h3>Profile</h3>
+            <ul>
+                <li>
+                    <a routerLink="/">
+                        Home
+                    </a>
+                </li>
+                <li>Profile</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Company Details -->
+<div class="company-details-area ptb-100">
+    <div class="container">
+        <div class="row">
+<!--            <div class="col-lg-8 col-md-12">-->
+<!--                <div class="company-details-desc">-->
+<!--                    <h4>About Our Company</h4>-->
+<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat enim a erat sit vulputate elementum orci. Risus nec viverra ornare venenatis proin ac varius tristique ut. Vitae egestas tellus amet nulla cursus.ands Pellentesque placerat maecenas egestas ullamcorper sed nunc. Vitae egestas tellus amet nulla something loss Pellentesque placerat maecenas egestas ullamcorper sed nunc.</p>-->
+<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat enim a erat sit vulputate elementum orci. Risus nec viverra ornare venenatis proin ac varius.</p>-->
+<!--                    <h4>Overview</h4>-->
+<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat enim a erat sit vulputate elementum orci. Risus nec viverra ornare venenatis proin ac varius tristique ut. Vitae egestas tellus amet nulla cursus.ands Pellentesque placerat maecenas egestas ullamcorper sed nunc. Vitae egestas tellus amet nulla something loss Pellentesque placerat maecenas egestas ullamcorper sed nunc.</p>-->
+<!--                    <ul>-->
+<!--                        <li>You have at least 3 years’ experience working as a Product Designer.</li>-->
+<!--                        <li>You have experience using Sketch and InVision or Framer</li>-->
+<!--                        <li>You have some previous experience working in an agile environment – Think two-week sprints.</li>-->
+<!--                        <li>You are familiar using Jira and Confluence in your workflow</li>-->
+<!--                    </ul>-->
+<!--                    <h4>Our Achivments</h4>-->
+<!--                    <div class="row justify-content-center">-->
+<!--                        <div class="col-lg-4 col-6 col-md-4">-->
+<!--                            <div class="counter-item">-->
+<!--                                <h3>1400</h3>-->
+<!--                                <p>Employees</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-4 col-6 col-md-4">-->
+<!--                            <div class="counter-item">-->
+<!--                                <h3>113</h3>-->
+<!--                                <p>Award Totals</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-4 col-12 col-md-4">-->
+<!--                            <div class="counter-item">-->
+<!--                                <h3>5M</h3>-->
+<!--                                <p>Million Follower</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat enim a erat sit vulputate elementum orci. Risus nec viverra ornare venenatis proin ac varius tristique ut. Vitae egestas tellus amet nulla cursus in that. Pellentesque placerat maecenas egestas ullamcorper sed sarinto.</p>-->
+<!--                    <h4>Our Gallery</h4>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-4 col-sm-4 col-md-4">-->
+<!--                            <div class="image">-->
+<!--                                <img src="assets/images/blog/blog-img1.jpg" alt="blog-image">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-4 col-sm-4 col-md-4">-->
+<!--                            <div class="image">-->
+<!--                                <img src="assets/images/blog/blog-img2.jpg" alt="blog-image">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-4 col-sm-4 col-md-4">-->
+<!--                            <div class="image">-->
+<!--                                <img src="assets/images/blog/blog-img3.jpg" alt="blog-image">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat enim a erat sit vulputate elementum orci. Risus nec viverra ornare venenatis proin ac varius tristique ut. Vitae egestas tellus amet nulla cursus in that. Pellentesque placerat maecenas egestas ullamcorper sed sarinto.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="col-lg-4 col-md-12">
+                <div class="company-details-sidebar" style="align-content: center">
+                    <div class="widget-item">
+                        <div class="job-company">
+                            <img src="assets/images/users/user.png" alt="user-image">
+                            <div class="title">
+                                <h4>{{currentUser.firstName}} {{currentUser.lastName}}</h4>
+<!--                                <a href="#">View website</a>-->
+                            </div>
+                        </div>
+                        <ul class="features-list">
+<!--                            <li>-->
+<!--                                <span>Industry</span>-->
+<!--                                Customer Service-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <span>Company size</span>-->
+<!--                                178 employees-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <span>Founded in</span>-->
+<!--                                2011-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <span>Phone</span>-->
+<!--                                <a href="tel:(123)4567890">(123) 456 7890</a>-->
+<!--                            </li>-->
+                            <li>
+                                <span>Email</span>
+                                <a>{{currentUser.email}}</a>
+                            </li>
+<!--                            <li>-->
+<!--                                <span>Location</span>-->
+<!--                                Brooklyn, NY-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <span>Website</span>-->
+<!--                                <a href="#" target="_blank">https://jend.com</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <span>Follow us</span>-->
+<!--                                <ul class="social-link">-->
+<!--                                    <li>-->
+<!--                                        <a href="https://www.facebook.com/" target="_blank">-->
+<!--                                            <i class="ri-facebook-fill"></i>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="https://www.instagram.com/" target="_blank">-->
+<!--                                            <i class="ri-instagram-fill"></i>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="https://twitter.com/" target="_blank">-->
+<!--                                            <i class="ri-twitter-fill"></i>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <a href="https://www.linkedin.com/" target="_blank">-->
+<!--                                            <i class="ri-linkedin-fill"></i>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+                        </ul>
+<!--                        <a href="#" class="default-btn">Claim This Company</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--&lt;!&ndash; Jobs &ndash;&gt;-->
+<!--<div class="jobs-area pb-75">-->
+<!--    <div class="container">-->
+<!--        <div class="section-title">-->
+<!--            <h2>Available Jobs</h2>-->
+<!--            <div class="bar ms-auto me-auto"></div>-->
+<!--            <p class="ms-auto me-auto">We collect reviews from our users so you can get an honest opinion of what an experience with our website are really like!</p>-->
+<!--        </div>-->
+<!--        <div class="row justify-content-center">-->
+<!--            <div class="col-lg-6 col-sm-6 col-md-6">-->
+<!--                <div class="job-card">-->
+<!--                    <div class="content">-->
+<!--                        <div class="job-image">-->
+<!--                            <a routerLink="/job-details">-->
+<!--                                <img src="assets/images/job/job1.jpg" >-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <h3><a routerLink="/job-details">Product Designer</a></h3>-->
+<!--                        <ul class="job-list1">-->
+<!--                            <li><i class="ri-briefcase-line"></i> Design</li>-->
+<!--                            <li><i class="ri-time-line"></i> 2 Week Ago</li>-->
+<!--                        </ul>-->
+<!--                        <span><i class="ri-map-pin-line"></i> 305 Hicks St Brooklyn, NY</span>-->
+<!--                    </div>-->
+<!--                    <div class="job-sub-content">-->
+<!--                        <ul class="job-list2">-->
+<!--                            <li class="time">Full Time</li>-->
+<!--                            <li class="freelance">Freelance</li>-->
+<!--                            <li class="urgent">Urgent</li>-->
+<!--                        </ul>-->
+<!--                        <div class="price">$150 - $180 <span>/Per Week</span></div>-->
+<!--                    </div>-->
+<!--                    <button class="bookmark-btn"><i class="ri-bookmark-line"></i></button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6 col-sm-6 col-md-6">-->
+<!--                <div class="job-card">-->
+<!--                    <div class="content">-->
+<!--                        <div class="job-image">-->
+<!--                            <a routerLink="/job-details">-->
+<!--                                <img src="assets/images/job/job2.jpg" >-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <h3><a routerLink="/job-details">Creative Director</a></h3>-->
+<!--                        <ul class="job-list1">-->
+<!--                            <li><i class="ri-briefcase-line"></i> Automotive Jobs</li>-->
+<!--                            <li><i class="ri-time-line"></i> 2 Hour Ago</li>-->
+<!--                        </ul>-->
+<!--                        <span><i class="ri-map-pin-line"></i> 105 San Antonio, TX</span>-->
+<!--                    </div>-->
+<!--                    <div class="job-sub-content">-->
+<!--                        <ul class="job-list2">-->
+<!--                            <li class="time">Full Time</li>-->
+<!--                            <li class="freelance">Freelance</li>-->
+<!--                        </ul>-->
+<!--                        <div class="price">$120 - $140 <span>/Per Week</span></div>-->
+<!--                    </div>-->
+<!--                    <button class="bookmark-btn"><i class="ri-bookmark-line"></i></button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->

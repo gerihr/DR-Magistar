@@ -1,0 +1,22 @@
+<div class="section-title" *ngIf="recommendations">
+  <h2>Предложени за теб събития</h2> 
+
+<div class="flex">
+  <div class="other-candidates-list" *ngFor="let event of recommendations">
+    <div >
+            <img src="{{event.image}}" alt="event-image">
+            <h4>
+                <a routerLink="/event-details/{{event.id}}">
+                    {{event.header}}
+                </a>
+            </h4>
+            <span>
+              {{event.date | date: 'dd/MM/yyyy'}}
+            </span> <br>
+            <span>
+              {{event.location}}, {{event.address}}
+            </span>
+      </div>
+  </div>
+</div>
+</div>

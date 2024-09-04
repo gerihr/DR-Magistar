@@ -1,0 +1,56 @@
+<!-- Page Title -->
+<div class="inner-banner">
+    <div class="container">
+        <div class="inner-title text-center">
+            <h3>Добре дошли!</h3>
+        </div>
+    </div>
+</div>
+
+<!-- My Account -->
+<div class="profile-authentication-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="form-wrapper">
+                <div class="register-form">
+                    <h2>Регистрация</h2>
+                    <form [formGroup]="formData">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>Ти си:</label>
+                                <select class="form-select" formControlName="type">
+                                    <option value="select" disabled selected>Моля, избери тип профил</option>
+                                    <option value="user">Любител на събития</option>
+                                    <option value="organiser">Организатор на събития</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label>Име</label>
+                            <input type="text" class="form-control" placeholder="Име" formControlName="name">
+                        </div>
+                        <div class="form-group">
+                            <label>Населено място<span>*</span></label>
+                            <select class="form-select" formControlName="city">
+                                <option value="" disabled selected>Населено място</option>
+                                <option *ngFor="let city of this.enumsService.getCities()" value="{{city.name}}">{{city.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Имейл</label>
+                            <input type="email" class="form-control" placeholder="Имейл" formControlName="email" >
+                        </div>
+                        <div class="form-group">
+                            <label>Парола</label>
+                            <input type="password" class="form-control" placeholder="Парола" formControlName="password">
+                        </div>
+                        <p class="description">Паролата трябва да бъде поне осем символа дълга. За да бъде по-силна, задължително е използването на главни и малки букви, цифри и символи като ! " ? $ % ^ &.</p>
+                        <hr>
+                        <button type="submit" (click)="toProfile()">Продължи</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

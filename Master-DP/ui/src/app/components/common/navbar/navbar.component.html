@@ -1,0 +1,103 @@
+<div class="navbar-area" stickyClass="sticky-box-shadow" ngStickyNav>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" [class.active]="classApplied">
+            <a class="navbar-brand" routerLink="/event-listings">
+                               <img src="assets/images/event-pro-logo.png" alt="logo">
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            Начало
+                        </a>
+                    </li>
+
+                    <div *ngFor="let category of enumsService.categories$ | async" class="nav-catgeories-wrapper">
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" routerLink="/event-listings/{{category.id}}" class="dropdown-toggle nav-link">
+                                {{category.category}}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <div *ngFor="let type of category.typeList">
+                                    <li class="nav-item">
+                                        <a routerLink="/event-listings/{{category.id}}/{{type.id}}" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                            {{type.type}}
+                                        </a>
+                                    </li>
+                                </div>
+                           
+                            </ul>
+                        </li>
+                    </div>
+                
+
+                </ul>
+                <div class="others-option d-sm-flex align-items-center" *ngIf="(authService.isLoggedIng$|async)==false">
+                    <div class="option-item">
+                        <a routerLink="/login" class="default-btn">
+                            Вход <i class="ri-user-3-line"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="others-option d-sm-flex align-items-center " *ngIf="(authService.isLoggedIng$|async)==true" >
+                    <ul class="navbar-nav">
+                                <div  class="nav-catgeories-wrapper" *ngIf="!(authService.isOrganiser$ | async)" >
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                            <button mat-icon-button style="background-color: #AF47D2 !important; color: white !important;">
+                                                <mat-icon>bookmark</mat-icon>
+                                              </button>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li class="nav-item">
+                                                <a class="nav-link" routerLink="/my-events">
+                                                    Запазени събития
+                                                </a>
+                                            </li>
+                                            <li class="nav-item" *ngIf="eventsService.savedEventsUser.getValue() && (eventsService.savedEventsUser.getValue()).length>0">
+                                                <a class="nav-link" routerLink="/suggested-events">
+                                                    Предложени за теб
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </div>
+
+                            <div  class="nav-catgeories-wrapper" *ngIf="authService.isOrganiser$ | async">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" class="nav-link dropdown-toggle">
+                                        <button mat-icon-button style="background-color: #AF47D2 !important; color: white !important;">
+                                            <mat-icon>subject</mat-icon>
+                                          </button>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" routerLink="/my-organised-events-listings">
+                                                Добавени събития
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" routerLink="/post-an-event">
+                                                Добави събитие
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </div>
+                        
+                    </ul>
+                    <div class="others-option d-sm-flex align-items-center" style="margin-left: 20px;">
+                        <div>
+                            <a (click)="logout()" style="width: 130px; padding-right: 30px !important;" class="default-btn nav-link" routerLinkActive="active"
+                               (click)="toggleClass()">
+                               Изход
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+</div>

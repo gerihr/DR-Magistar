@@ -1,0 +1,152 @@
+<!-- Page Title -->
+<div class="inner-banner" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
+        <div class="inner-title text-center">
+            <h3>Събития</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Jobs -->
+<div class="jobs-area ptb-100" *ngIf="eventsList && eventsList.length>0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+                <mat-tab-group style="margin-bottom: 15px;" (selectedTabChange)="showPassedEvents()">
+                    <mat-tab label="Предстоящи"></mat-tab>
+                    <mat-tab label="Минали"></mat-tab>
+
+                </mat-tab-group>
+
+                <div>
+                    <div class="row" >
+                        <div class="col-lg-12 col-sm-6 col-md-6" *ngFor="let event of eventsList">
+                            <div class="job-card" style="cursor: pointer;" *ngIf="showPassed == true ? event.passed == true : event.passed!=true">
+                                <div (click)="goToEventDetails(event.id)">
+                                    <div class="content row">
+                                        <div class="col-lg-6 col-sm-6 col-md-6">
+                                            <img src={{event.image}} >
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6 col-md-6">
+                                            <h3><a >{{event.header}}</a></h3>
+                                        <span><i class="ri-calendar-line"></i>{{event.date | date: 'dd/MM/yyyy'}}</span>
+                                        <span><i class="ri-time-line"></i> {{event.time}}</span>
+                                        <span><i class="ri-map-pin-line"></i>{{event.location}}</span>
+                                        <span class="price"><i class="ri-wallet-3-line"></i>{{event.price}} BGN</span>
+                                        </div>
+                                    </div>
+                                    <div class="job-sub-content">
+                                            <mat-chip-list
+                                            class="chip chip-wrapper"
+                                            cdkDropList 
+                                            cdkDropListOrientation="horizontal">
+                                            <mat-chip
+                                            class="chip-box"
+                                            cdkDrag
+                                            >
+                                            {{getCategoryName(event.category)}}
+                                            </mat-chip>
+                                            <mat-chip
+                                            class="chip-box"
+                                            cdkDrag
+                                        >
+                                            {{getTypeName(event.type)}}
+                                        </mat-chip>
+                                        </mat-chip-list>
+                                
+                                    </div>
+                                </div>
+                                <div *ngIf="!(authService.isOrganiser$ | async) && event.passed!==true">
+                                    <button class="bookmark-btn" *ngIf="eventService.isEventSaved(event.id)" (click)="removeSavedEvent(event)"><mat-icon>turned_in</mat-icon></button>
+                                    <button class="bookmark-btn" *ngIf="!eventService.isEventSaved(event.id)" (click)="saveRemovedEvent(event)"><mat-icon>turned_in_not</mat-icon></button>
+                                </div>
+                                 </div>
+                        </div>
+            
+                </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <!-- <div class="pagination-area">
+                            <div class="nav-links">
+                                <a routerLink="/job-listings" class="prev page-numbers"><i class="ri-arrow-left-s-line"></i></a>
+                                <span class="page-numbers current">1</span>
+                                <a routerLink="/job-listings" class="page-numbers">2</a>
+                                <a routerLink="/job-listings" class="page-numbers">3</a>
+                                <a routerLink="/job-listings" class="page-numbers">4</a>
+                                <a routerLink="/job-listings" class="next page-numbers"><i class="ri-arrow-right-s-line"></i></a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class="job-listings-sidebar">
+                   
+                    <h4>Филтрирай събития</h4>
+ 
+                    <div class="widget-item">
+                        <div class="form-group">
+                            <h4>Населено място</h4>
+                            <select id="typeOfTraining" class="form-select" [(ngModel)]="cityFilter">
+                                        <option value="" selected disabled>Изберете град</option>
+                                        <option *ngFor="let city of this.enumsService.getCities()" value="{{city.name}}">{{city.name}}</option>
+                             
+                            </select>
+                        </div>
+                    </div>
+                    <div class="widget-item">
+                        <div class="form-group">
+                            <h4>Дата</h4>
+                            <div style="display: flex; justify-content: center; flex-direction: column; gap: 15px;">
+                                <mat-form-field color="accent" appearance="fill" style="font-size: 14px !important;">
+                                    <mat-label>Начална дата</mat-label>
+                                    <input matInput [matDatepicker]="startDate" [min]="today"  [(ngModel)]="startDateFilter">
+                                    <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #startDate  color="primary"></mat-datepicker>
+                                  </mat-form-field>
+                                  
+                                  <mat-form-field color="accent" appearance="fill"  style="font-size: 14px !important;">
+                                    <mat-label>Крайна дата</mat-label>
+                                    <input matInput [matDatepicker]="endDate" [min]="today"  [(ngModel)]="endDateFilter">
+                                    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #endDate color="primary"></mat-datepicker>
+                                  </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-item">
+                        <div class="form-group">
+                            <h4>Максимална цена вход</h4>
+                            <div style="display: flex; justify-content: center; max-height: 150px;">
+                                <input id="maxPrice" style="width: 100px; height: 40px; margin-left: 10px;" type="text"  [(ngModel)]="maxPriceFilter" class="form-control" placeholder="Лева">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="button-wrapper">
+                            <button type="submit" class="submit-btn" (click)="filter()">Филтрирай</button>
+                            <button type="submit" class="submit-btn" style="background-color: #ce8483" (click)="clearFilters()">Изчисти</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="jobs-area ptb-100" *ngIf=" eventsList && eventsList.length==0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-md-12">
+                <div >
+                    <div class="row" >
+                            <div class="col-lg-12 col-sm-6 col-md-6 text-center" >
+                                <h3>Все още няма събития за тази категория</h3>
+                            </div>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

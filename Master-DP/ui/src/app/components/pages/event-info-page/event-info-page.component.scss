@@ -1,0 +1,1100 @@
+.event-banner{
+    background-size: 100% !important;
+    min-width: 100%;
+    min-height: 300px;
+}
+.post-a-job-form {
+    padding: 50px;
+    border-radius: 8px;
+    border: 1px solid #ecedf2;
+    background-color: var(--whiteColor);
+    box-shadow: 0 6px 15px 0 rgba(64, 79, 104, .05);
+
+    .form-group {
+        margin-bottom: 25px;
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font: {
+                size: 15px;
+                weight: 500;
+            };
+            span {
+                color: red;
+            }
+        }
+        .form-control {
+            height: 55px;
+            box-shadow: unset;
+            border-radius: 5px;
+            padding-left: 20px;
+            color: var(--blackColor);
+            font-size: var(--fontSize);
+            border: 1px solid #f8f8f8;
+            background-color: #f8f8f8;
+
+            &::placeholder {
+                color: var(--paragraphColor);
+                transition: var(--transition);
+            }
+            &:focus {
+                border-color: var(--primaryColor);
+
+                &::placeholder {
+                    color: transparent;
+                }
+            }
+        }
+        .form-select {
+            color: var(--paragraphColor);
+            border: 1px solid #f8f8f8;
+            background-color: #f8f8f8;
+            font-size: var(--fontSize);
+            border-radius: 5px;
+            box-shadow: unset;
+            cursor: pointer;
+            height: 55px;
+            padding: {
+                left: 20px;
+                right: 20px;
+            };
+            &:hover {
+                border-color: var(--primaryColor);
+            }
+        }
+        input[type="file" i] {
+            margin-top: 7px;
+        }
+        p {
+            line-height: initial;
+            margin-top: 12px;
+            font: {
+                size: 14px;
+                style: italic;
+            };
+        }
+
+        .calendar-wrapper{
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .calendar-card {
+            width: 50% !important;
+        }
+    }
+    .default-btn {
+        padding: {
+            left: 30px;
+            right: 30px;
+        };
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .post-a-job-form {
+        border: 0;
+        padding: 0;
+        box-shadow: unset;
+        background-color: transparent;
+    
+        .form-group {
+            margin-bottom: 20px;
+    
+            label {
+                font-size: 14px;
+            }
+            .form-control {
+                height: 50px;
+                font-size: 14px;
+                padding-left: 12px;
+            }
+            .form-select {
+                font-size: 14px;
+                height: 50px;
+                padding: {
+                    left: 12px;
+                    right: 12px;
+                };
+            }
+            input[type="file" i] {
+                margin-top: 5px;
+            }
+            p {
+                font-size: 13px;
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .post-a-job-form {
+        padding: 30px;
+
+        .form-group {
+            label {
+                font-size: 14px;
+            }
+            .form-control {
+                height: 50px;
+                font-size: 15px;
+                padding-left: 15px;
+            }
+            .form-select {
+                height: 50px;
+                font-size: 15px;
+                padding: {
+                    left: 15px;
+                    right: 15px;
+                };
+            }
+            input[type="file" i] {
+                margin-top: 7px;
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+.candidate-details-sidebar {
+    border-radius: 10px;
+    margin-bottom: 25px;
+    background-color: var(--whiteColor);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 36px 0px, rgba(0, 0, 0, 0.03) 0px 0px 0px 1px;
+    display: flex;
+    justify-content: space-evenly;
+
+    .profile {
+        padding: 25px;
+        text-align: center;
+        border-bottom: 1px solid #eeeeee;
+
+        .main-image {
+            max-width: 150px;
+            margin-bottom: 15px;
+            border: 4px solid var(--primaryColor);
+        }
+        .title {
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+            display: flex;
+
+            h3 {
+                font-size: 22px;
+                margin-bottom: 0;
+            }
+            img {
+                width: 40px;
+                margin-left: 15px;
+                border-radius: 5px;
+            }
+        }
+        p {
+            margin-bottom: 8px;
+        }
+        .rating {
+            margin-bottom: 8px;
+
+            i {
+                line-height: 1;
+                font-size: 18px;
+                color: #fea014;
+                display: inline-block;
+                margin: {
+                    left: 2px;
+                    right: 2px;
+                };
+            }
+        }
+        .social-icon {
+            list-style-type: none;
+            margin-bottom: 0;
+            padding-left: 0;
+
+            li {
+                display: inline-block;
+                margin: {
+                    left: 4px;
+                    right: 4px;
+                };
+                a {
+                    width: 30px;
+                    height: 30px;
+                    display: block;
+                    font-size: 15px;
+                    line-height: 30px;
+                    text-align: center;
+                    border-radius: 50px;
+                    background-color:  #f1f1f1;
+
+                    &:hover {
+                        background-color: var(--primaryColor);
+                        color: var(--whiteColor);
+                    }
+                }
+            }
+        }
+    }
+    .info {
+        padding: 25px;
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--secondaryColor);
+        }
+        ul {
+            list-style-type: none;
+            margin-bottom: 0;
+            padding-left: 0;
+
+            li {
+                margin-bottom: 15px;
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+
+                span {
+                    font-size: 15px;
+                    margin-bottom: 6px;
+                    color: var(--paragraphColor);
+                }
+                a {
+                    display: block;
+                    font-weight: 500;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .download-resume {
+        border-top: 1px solid #eeeeee;
+        padding: 25px;
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--secondaryColor);
+        }
+        .download-btn {
+            width: 100%;
+            display: block;
+            text-align: center;
+            position: relative;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+            padding: 12px 30px 12px 20px;
+            color: var(--paragraphColor);
+
+            i {
+                transform: translateY(-50%);
+                position: absolute;
+                margin-left: 5px;
+                top: 50%;
+            }
+            &:hover {
+                background-color: var(--primaryColor);
+                color: var(--whiteColor);
+            }
+        }
+    }
+}
+.candidate-details-desc {
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    background-color: var(--whiteColor);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 36px 0px, rgba(0, 0, 0, 0.03) 0px 0px 0px 1px;
+
+    .bar {
+        height: 7px;
+        width: 85px;
+        position: relative;
+        border-radius: 50px;
+        margin-bottom: 25px;
+        background: #00ca9723;
+
+        &:before {
+            left: 0;
+            top: -2px;
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border-radius: 50px;
+            background: var(--primaryColor);
+            animation: {
+                duration: 2s;
+                timing-function: linear;
+                iteration-count: infinite;
+                name: MOVE-BG;
+            };
+        }
+    }
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 12px;
+
+        &:not(:first-child) {
+            margin-top: 25px;
+        }
+    }
+    h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    hr {
+        opacity: 1;
+        border: 1px solid #eeeeee !important;
+        margin: {
+            top: 25px;
+            bottom: 0;
+        };
+    }
+    p {
+        a {
+            color: var(--primaryColor);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        strong {
+            color: var(--blackColor);
+        }
+    }
+    ul, ol {
+        margin: {
+            top: 20px;
+            bottom: 20px;
+        };
+        li {
+            color: var(--paragraphColor);
+            margin-bottom: 15px;
+
+            a {
+                color: var(--primaryColor);
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .experience-list {
+        padding-left: 0;
+        list-style-type: none;
+        margin: {
+            top: 0;
+            bottom: 0;
+        };
+        li {
+            padding-left: 108px;
+            margin-bottom: 25px;
+            position: relative;
+
+            img {
+                left: 0;
+                top: 50%;
+                width: 88px;
+                height: 88px;
+                position: absolute;
+                border-radius: 50%;
+                transform: translateY(-50%);
+            }
+            h3 {
+                font-size: 18px;
+                margin: {
+                    bottom: 10px;
+                    top: 0;
+                };
+            }
+            span {
+                font-size: 15px;
+            }
+            ul {
+                list-style-type: none;
+                margin-bottom: 0;
+                padding-left: 0;
+                margin: {
+                    top: 10px;
+                    bottom: 0;
+                };
+                li {
+                    position: relative;
+                    padding-left: 22px;
+                    display: inline-block;
+                    color: var(--paragraphColor);
+                    margin: {
+                        bottom: 0;
+                        right: 20px;
+                    };
+                    i {
+                        left: 0;
+                        top: -1px;
+                        position: absolute;
+                        color: var(--primaryColor);
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .candidate-skills {
+        padding-left: 0;
+        list-style-type: none;
+        margin: {
+            top: 0;
+            bottom: 0;
+        };
+        li {
+            font-size: 15px;
+            padding: 7px 20px;
+            display: inline-block;
+            background-color: #f9f9f9;
+            margin: {
+                right: 5px;
+                bottom: 5px;
+            };
+        }
+    }
+    .candidate-education {
+        padding-left: 0;
+        list-style-type: none;
+        margin: {
+            top: 0;
+            bottom: 0;
+        };
+        li {
+            padding-left: 75px;
+            margin-bottom: 25px;
+            position: relative;
+
+            img {
+                left: 0;
+                top: 50%;
+                width: 60px;
+                height: 60px;
+                position: absolute;
+                border-radius: 50%;
+                transform: translateY(-50%);
+            }
+            h3 {
+                font-size: 18px;
+                margin: {
+                    bottom: 10px;
+                    top: 0;
+                };
+            }
+            span {
+                font-size: 15px;
+            }
+            ul {
+                list-style-type: none;
+                margin-bottom: 0;
+                padding-left: 0;
+                margin: {
+                    top: 10px;
+                    bottom: 0;
+                };
+                li {
+                    position: relative;
+                    padding-left: 22px;
+                    display: inline-block;
+                    color: var(--paragraphColor);
+                    margin: {
+                        bottom: 0;
+                        right: 20px;
+                    };
+                    i {
+                        left: 0;
+                        top: -1px;
+                        position: absolute;
+                        color: var(--primaryColor);
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+.other-candidates-list {
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    background-color: var(--whiteColor);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 36px 0px, rgba(0, 0, 0, 0.03) 0px 0px 0px 1px;
+
+    h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+    .bar {
+        height: 7px;
+        width: 85px;
+        position: relative;
+        border-radius: 50px;
+        margin-bottom: 30px;
+        background: #00ca9723;
+
+        &:before {
+            left: 0;
+            top: -2px;
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border-radius: 50px;
+            background: var(--primaryColor);
+            animation: {
+                duration: 2s;
+                timing-function: linear;
+                iteration-count: infinite;
+                name: MOVE-BG;
+            };
+        }
+    }
+    .candidates-list {
+        list-style-type: none;
+        margin-bottom: 0;
+        padding-left: 0;
+
+        li {
+            position: relative;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eeeeee;
+            padding: {
+                left: 80px;
+                bottom: 15px;
+            };
+            img {
+                left: 0;
+                top: 5px;
+                max-width: 65px;
+                border-radius: 50%;
+                position: absolute;
+            }
+            h4 {
+                font-size: 18px;
+                margin-bottom: 4px;
+            }
+            p {
+                margin-bottom: 5px;
+                font-size: 15px;
+            }
+            .rating {
+                i {
+                    line-height: 1;
+                    color: #fea014;
+                    margin-right: 3px;
+                    display: inline-block;
+                }
+            }
+            &:last-child {
+                border: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .candidate-details-sidebar {
+        display: flex;
+        flex-direction: column;
+        .profile {
+            padding: 20px;
+
+            .main-image {
+                border-width: 2px;
+                margin-bottom: 10px;
+            }
+            .title {
+                h3 {
+                    font-size: 18px;
+                }
+                img {
+                    width: 35px;
+                    margin-left: 8px;
+                }
+            }
+        }
+        .info {
+            padding: 20px;
+
+            h3 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+            ul {
+                li {
+                    margin-bottom: 12px;
+
+                    span {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        .download-resume {
+            padding: 20px;
+
+            h3 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+        }
+    }
+    .candidate-details-desc {
+        padding: 20px;
+
+        .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 12px;
+
+            &:not(:first-child) {
+                margin-top: 20px;
+            }
+        }
+        h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .bar {
+            margin-bottom: 20px;
+        }
+        hr {
+            margin-top: 20px;
+        }
+        ul, ol {
+            margin: {
+                top: 15px;
+                bottom: 15px;
+            };
+            li {
+                margin-bottom: 12px;
+            }
+        }
+        .experience-list {
+            margin: {
+                top: 0;
+                bottom: 0;
+            };
+            li {
+                padding-left: 0;
+                margin-bottom: 20px;
+
+                img {
+                    top: 0;
+                    position: relative;
+                    margin-bottom: 15px;
+                    transform: translateY(0);
+                }
+                h3 {
+                    font-size: 16px;
+                    margin-bottom: 8px;
+                }
+                span {
+                    font-size: 14px;
+                }
+                ul {
+                    margin: {
+                        top: 10px;
+                        bottom: 0;
+                    };
+                    li {
+                        padding-left: 18px;
+                        display: block;
+                        margin: {
+                            bottom: 8px;
+                            right: 0;
+                        };
+                        i {
+                            top: 0;
+                        }
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .candidate-skills {
+            margin: {
+                top: 0;
+                bottom: 0;
+            };
+            li {
+                font-size: 13px;
+                padding: 7px 18px;
+            }
+        }
+        .candidate-education {
+            margin: {
+                top: 0;
+                bottom: 0;
+            };
+            li {
+                padding-left: 0;
+                margin-bottom: 20px;
+
+                img {
+                    top: 0;
+                    position: relative;
+                    margin-bottom: 10px;
+                    transform: translateY(0);
+                }
+                h3 {
+                    font-size: 16px;
+                    margin-bottom: 8px;
+                }
+                span {
+                    font-size: 14px;
+                }
+                ul {
+                    margin: {
+                        top: 10px;
+                        bottom: 0;
+                    };
+                    li {
+                        padding-left: 18px;
+                        display: block;
+                        margin: {
+                            bottom: 8px;
+                            right: 0;
+                        };
+                        i {
+                            top: 0;
+                        }
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .other-candidates-list {
+        padding: 20px;
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+        .bar {
+            margin-bottom: 25px;
+        }
+        .candidates-list {
+            li {
+                padding: {
+                    left: 75px;
+                    bottom: 15px;
+                };
+                img {
+                    max-width: 60px;
+                }
+                h4 {
+                    font-size: 16px;
+                }
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+    .candidate-details-sidebar {
+        display: flex;
+        justify-content: space-evenly;
+
+        .profile {
+            padding: 20px;
+
+            .title {
+                display: block;
+
+                h3 {
+                    font-size: 21px;
+                }
+                img {
+                    margin: {
+                        left: 0;
+                        top: 8px;
+                    };
+                }
+            }
+        }
+        .info {
+            padding: 20px;
+        }
+        .download-resume {
+            padding: 20px;
+        }
+    }
+    .candidate-details-desc {
+        padding: 20px;
+    }
+    .other-candidates-list {
+        padding: 20px;
+
+        h3 {
+            font-size: 20px;
+        }
+        .candidates-list {
+            li {
+                padding-left: 0;
+
+                img {
+                    top: 0;
+                    position: relative;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+}
+
+.counter-item {
+    padding: 30px;
+    text-align: center;
+    background-color: #f8f8f8;
+    margin: {
+        top: 10px;
+        bottom: 15px;
+    };
+    h3 {
+        font-size: 35px;
+        margin-bottom: 5px;
+    }
+    p {
+        color: var(--secondaryColor);
+    }
+}
+
+.button-wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 25px;
+}
+
+.submit-btn {
+    width: 100%;
+    border: none;
+    outline: none;
+    display: block;
+    border-radius: 5px;
+    text-align: center;
+    padding: 13px 20px;
+    color: var(--whiteColor);
+    transition: var(--transition);
+    background-color: var(--primaryColor);
+    font: {
+        size: var(--fontSize);
+        weight: 500;
+    };
+    &:hover {
+        background-color: var(--secondaryColor);
+    }
+}
+
+body {
+    padding: 50px;
+    box-sizing: border-box;
+    text-align: center;
+    *, *:before, *:after {
+        box-sizing: inherit;
+        text-align: left;
+    }
+}
+#rolesDropdown {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 5px; border-radius: 5px;
+    max-width: 100%;
+    background: #efefef;
+    counter-reset: pills;
+    > input {
+        display: none;
+        &[id='tgl']:checked {
+            ~ label[for="tgl"] {
+                &:after {
+                    content: '\25b2  ' !important;
+                }
+            }
+            ~ ul {
+                display: block;
+            }
+        }
+        @for $i from 2 through 5 {
+            &:nth-of-type(#{$i}) {
+                &:checked {
+                    counter-increment: pills;
+                    ~ label {
+                        &:nth-of-type(#{$i}) {
+                            display: inline-block;
+                        }
+                    }
+                    ~ ul {
+                        li {
+                            &:nth-of-type(#{$i}) {
+                                label {
+                                    &:before {
+                                        content: '\2611  ';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    >label {
+        display: inline-block;
+        &:first-of-type {
+            display: block;
+            width: 100%;
+            &:after {
+                content: '\25bc  ';
+                display: inline-block;
+                float: right;
+            }
+        }
+        + label {
+            background: rgba(0,0,0,.5);
+            padding: 5px;
+            border-radius: 10px/50%;
+            color: #fff;
+            display: none;
+            transition: .3s;
+            &:hover {
+                background: #345dfe;
+                &:after {
+                    opacity: 1;
+                    visibility: visible;
+                    margin-left: .4em;
+                }
+            }
+            &:after {
+                content: '+';
+                display: inline-block;
+                background: rgba(0,0,0,.5);
+                width: 1em;
+                text-align: center;
+                border-radius: 50%;
+                line-height: 1;
+                transform: rotate(45deg);
+                margin-left: -1em;
+                opacity: 0;
+                visibility: hidden;
+                transition: .3s;
+            }
+        }
+    }
+    > ul {
+        display: none;
+        position: absolute;
+        top: calc(100% - 5px);
+        left: -1px;
+        min-width: calc(100% + 2px);
+        box-sizing: border-box;
+        list-style: none;
+        background: #efefef;
+        border: 1px solid #ccc;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        margin: 0; padding: 5px;
+
+        li {
+            white-space: nowrap;
+
+            label {
+                cursor: pointer;
+                display: block;
+                transition: .3s;
+                padding: 5px;
+                margin: 0 -5px;
+                &[for="tgl"] {
+                    &:before {
+                        content: none !important;
+                    }
+                }
+                &:hover {
+                    background: #345dfe;
+                    color: #fff;
+                }
+                &:before {
+                    content: '\2610  ';
+                }
+            }
+        }
+    }
+    > label[for="tgl"] {
+        &:before {
+            content: '(' counter(pills) ') ';
+        }
+    }
+}
+
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
