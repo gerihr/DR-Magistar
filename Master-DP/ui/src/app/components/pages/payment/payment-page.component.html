@@ -1,0 +1,94 @@
+
+<div class="inner-banner"  *ngIf="!paymentSuccessful">
+    <div class="container">
+        <div class="inner-title text-center">
+            <h3>Плащане</h3>
+        </div>
+    </div>
+</div>
+<div class="container-payment d-md-flex align-items-center" *ngIf="!paymentSuccessful">
+    <div class="card box2 shadow-sm">
+      <div class="d-flex align-items-center justify-content-between p-5">
+        <span class="h5 m-0">Моля, въведете вашите данни, за да продължите</span>
+        <div class="btn btn-primary bar"><span class="fas fa-bars"></span></div>
+      </div>
+      <form [formGroup]="paymentForm">
+        <div class="row">
+          <div class="col-12">
+            <div class="d-flex flex-column px-md-5 px-4 mb-4">
+              <span> Card Number</span>
+              <div class="inputWithIcon">
+                <input
+                  class="form-control"
+                  type="number"
+                  minlength="16"
+                  maxlength="16"
+                  placeholder="**** **** **** ****"
+                  formControlName="creditCard"
+                />
+                <span class="">
+                  <img
+                    src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-logok-15.png"
+                    alt=""
+                /></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex flex-column ps-md-5 px-md-0 px-4 mb-4">
+              <span>Expiration<span class="ps-1">Date</span></span>
+              <div class="inputWithIcon">
+                <input type="text" class="form-control" value="09/24" formControlName="expDate"/>
+                <span class="fas fa-calendar-alt"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex flex-column pe-md-5 px-md-0 px-4 mb-4">
+              <span>CVV</span>
+              <div class="inputWithIcon">
+                <input type="password" class="form-control" placeholder="123" formControlName="cvv"/>
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="d-flex flex-column px-md-5 px-4 mb-4">
+              <span>Name</span>
+              <div class="inputWithIcon">
+                <input
+                  class="form-control text-uppercase"
+                  type="text"
+                  placeholder="Cardholder name"
+                  formControlName="cardHolderName"
+                />
+                <span class="far fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 px-md-5 px-4 mt-3">
+            <button class="btn btn-primary w-100" (click)="pay()">продължи</button>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+
+<div class="container-payment success d-md-flex align-items-center" style="margin-top: 10px;" *ngIf="paymentSuccessful">
+    <div class="card box2 shadow-sm">
+      <div class="d-flex align-items-center justify-content-between p-5 payment-header">
+        <span class="h5 m-0">Успешно плащане</span>
+      </div>
+        <div class="row">
+          <div class="col-12 row justify-content-center">
+            <div class="circle">
+                <i class="checkmark">✓</i>
+              </div>
+          </div>
+        </div>
+        <div style="text-align: center; align-items: center;">
+            <p>Моля, проверете за своите билети на посочения от вас имейл.<br> При проблем се свържете с нас.</p>
+        </div>
+    </div>
+</div>

@@ -4,13 +4,12 @@ import {CityService} from "../../../../service/city.service";
 import {AsyncSubject, catchError, delay, EMPTY, empty, map, Observable, of, tap} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {TrainerService} from "../../../../service/trainer.service";
 import {StorageService} from "../../../../service/storage.service";
 import {FileUploadService} from "../../../../service/file-upload.service";
-import { EventService } from 'src/service/event.service';
-import { EnumsService } from 'src/service/enums.service';
-import { AuthService } from 'src/service/auth.service';
-import { SharedService } from 'src/service/shared.service';
+import { EventService } from '../../../../service/event.service';
+import { EnumsService } from '../../../../service/enums.service';
+import { AuthService } from '../../../../service/auth.service';
+import { SharedService } from '../../../../service/shared.service';
 
 
 @Component({

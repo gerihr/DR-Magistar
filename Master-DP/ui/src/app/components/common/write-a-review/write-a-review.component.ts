@@ -1,12 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import {FormBuilder, FormControl} from "@angular/forms";
-import {TrainerService} from "../../../../service/trainer.service";
 import {empty} from "rxjs";
 import {StorageService} from "../../../../service/storage.service";
-import { AuthService } from 'src/service/auth.service';
-import { EventService } from 'src/service/event.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../../../service/auth.service';
+import { EventService } from '../../../../service/event.service';
 
 @Component({
     selector: 'app-write-a-review',
@@ -22,7 +21,7 @@ export class WriteAReviewComponent implements OnInit {
     review: any;
 
 
-    constructor(private formBuilder: FormBuilder, private trainerService: TrainerService, private storageService: StorageService, private eventService:EventService,
+    constructor(private formBuilder: FormBuilder, private storageService: StorageService, private eventService:EventService,
         public authService: AuthService, private toastrService: ToastrService ) {
     }
 

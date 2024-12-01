@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/common/not-found/not-found.component';
-import { AboutPageComponent } from './components/pages/about-page/about-page.component';
 import { BlogDetailsPageComponent } from './components/pages/blog-details-page/blog-details-page.component';
-import { CandidateDetailsPageComponent } from './components/pages/candidate-details-page/candidate-details-page.component';
 import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
 import { FaqPageComponent } from './components/pages/faq-page/faq-page.component';
 import { MainHomeComponent } from './components/pages/main-home/main-home.component';
@@ -18,6 +16,7 @@ import { AuthGuard } from './auth.guard';
 import { EventListingsPageComponent } from './components/pages/event-listings-page/event-listings-page.component';
 import { EventInfoPageComponent } from './components/pages/event-info-page/event-info-page.component';
 import { SuggestedPageComponent } from './components/pages/suggested-page/suggested-page.component';
+import { EventDetailsPageComponent } from './components/pages/event-details-page/event-details-page.component';
 
 const routes: Routes = [
     {path: '', component: MainHomeComponent},
@@ -30,7 +29,7 @@ const routes: Routes = [
     {path: 'post-an-event', component: EventInfoPageComponent, canActivate: [AuthGuard], data: {roles: ['organiser']}},
     {path: 'post-an-event/:id', component: EventInfoPageComponent, canActivate: [AuthGuard], data: {roles: ['organiser']}},
     {path: 'payment', component: PaymentPageComponent, canActivate: [AuthGuard], data: {roles: ['user']}},
-    {path: 'event-details/:id', component: CandidateDetailsPageComponent},
+    {path: 'event-details/:id', component: EventDetailsPageComponent},
     {path: 'faq', component: FaqPageComponent},
     {path: 'privacy-policy', component: PrivacyPolicyPageComponent},
     {path: 'terms-conditions', component: TermsConditionsPageComponent},

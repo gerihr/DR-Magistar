@@ -1,9 +1,8 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {FileUploadService} from 'src/service/file-upload.service';
 import {StorageService} from "../../../../service/storage.service";
-import {TrainerService} from "../../../../service/trainer.service";
+import { FileUploadService } from '../../../../service/file-upload.service';
 
 @Component({
     selector: 'app-file-upload',
@@ -21,7 +20,7 @@ export class FileUploadComponent implements OnInit, AfterViewInit {
 
     @Output() setCurrentImageEvent = new EventEmitter<string>();
     @Input() currentImg: string;
-    constructor(private uploadService: FileUploadService, public storageService: StorageService, public trainerService: TrainerService) {
+    constructor(private uploadService: FileUploadService, public storageService: StorageService) {
     }
 
     ngOnInit(): void {

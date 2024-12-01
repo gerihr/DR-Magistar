@@ -1,5 +1,4 @@
 <div *ngIf="eventData">
-<!-- Page Title -->
 <div class="inner-banner event-banner"  [ngStyle]="{'background': ' url(' + imageUrl  + ') no-repeat 0 0'}">
     <div class="container">
         <div class="inner-title text-center">
@@ -8,7 +7,6 @@
     </div>
 </div>
 
-<!-- Trainer Details -->
 <div class="candidate-details-area pt-100 pb-sm-45">
     <div class="container">
         <div class="row" style="justify-content: center">
@@ -41,13 +39,13 @@
                         </ul>
 
                         <div *ngIf="(authService.isOrganiser$ | async) && eventData.organiserId==authService.getUserId()">
-                            <button class="submit-btn" style="margin-top: 10px;" (click)="editEvent(eventData.id)">Редактирай</button>
+                            <button class="submit-btn" style="margin-top: 10px;" (click)="editEvent(eventData.id)" *ngIf="eventData.passed!=true">Редактирай</button>
                             <button class="submit-btn" style="margin-top: 10px;" (click)="deleteEvent(eventData.id)">Изтрии</button>  
                             <button class="submit-btn" style="margin-top: 10px;" (click)="getAnalys(eventData.id)">Покажи анализ</button>    
                             <button class="submit-btn" style="margin-top: 10px;" (click)="getTicketList(eventData)">Покажи списък с билети</button>    
                         </div>
 
-                        <div  *ngIf="!(authService.isOrganiser$ | async) && (authService.isLoggedIng$|async)==true">
+                        <div  *ngIf="!(authService.isOrganiser$ | async) && (authService.isLoggedIng$|async)==true && eventData.passed!=true">
                             <button class="submit-btn dark-btn flex" *ngIf="eventService.isEventSaved(eventData.id)" (click)="removeSavedEvent(eventData)"> Не се интересувам<mat-icon>turned_in</mat-icon></button>
                             <button class="submit-btn flex" *ngIf="!eventService.isEventSaved(eventData.id)" (click)="saveRemovedEvent(eventData)"> Интересувам се <mat-icon>turned_in_not</mat-icon></button>
                             <button class="submit-btn flex" (click)="openPaymentDialog()"> Купи билет <mat-icon>inbox</mat-icon>

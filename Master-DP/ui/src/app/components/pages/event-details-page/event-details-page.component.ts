@@ -1,26 +1,23 @@
 import {AfterViewInit, Component, Inject, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {TrainerService} from "../../../../service/trainer.service";
-import {OwlOptions} from "ngx-owl-carousel-o";
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { EventService } from 'src/service/event.service';
 import { EMPTY, catchError, delay, of, tap } from 'rxjs';
-import { SharedService } from 'src/service/shared.service';
-import { EnumsService } from 'src/service/enums.service';
-import { AuthService } from 'src/service/auth.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Width } from 'ngx-owl-carousel-o/lib/services/carousel.service';
+import { MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
-import { TicketService } from 'src/service/ticket.service';
 import { ToastrService } from 'ngx-toastr';
 import { TicketChartComponent } from '../chart/chart.component';
+import { EventService } from '../../../../service/event.service';
+import { SharedService } from '../../../../service/shared.service';
+import { EnumsService } from '../../../../service/enums.service';
+import { AuthService } from '../../../../service/auth.service';
+import { TicketService } from '../../../../service/ticket.service';
 import { PdfGeneratorService } from 'src/service/pdf.service';
 
 @Component({
-    selector: 'app-candidate-details-page',
-    templateUrl: './candidate-details-page.component.html',
-    styleUrls: ['./candidate-details-page.component.scss']
+    selector: 'app-event-details-page',
+    templateUrl: './event-details-page.component.html',
+    styleUrls: ['./event-details-page.component.scss']
 })
-export class CandidateDetailsPageComponent implements OnInit, AfterViewInit {
+export class EventDetailsPageComponent implements OnInit, AfterViewInit {
 
     eventData;
     eventId: string;
@@ -32,7 +29,7 @@ export class CandidateDetailsPageComponent implements OnInit, AfterViewInit {
     @ViewChild('paymentDialog', { static: true }) paymentDialog: TemplateRef<any>;
 
 
-    constructor(public trainerService: TrainerService, private route: ActivatedRoute, public eventService: EventService, 
+    constructor(private route: ActivatedRoute, public eventService: EventService, 
         private sharedService: SharedService, private enumsService: EnumsService, public authService: AuthService,
         private dialog: MatDialog, private router:Router, private ticketService: TicketService,
         public pdfService: PdfGeneratorService
@@ -94,6 +91,7 @@ export class CandidateDetailsPageComponent implements OnInit, AfterViewInit {
           tap(()=> this.sharedService.isLoading(true)),
           catchError(err => {
             if(err.status !== 200){
+              this.sharedService.errorMessage(err.error)
               this.sharedService.isLoading(false);
               return EMPTY
             }
@@ -103,7 +101,6 @@ export class CandidateDetailsPageComponent implements OnInit, AfterViewInit {
             
           })
         ).subscribe((res:any )=>{
-          
             this.router.navigate(['my-organised-events-listings'])
             this.sharedService.isLoading(false);   
           })

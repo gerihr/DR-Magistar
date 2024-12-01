@@ -43,18 +43,43 @@ export class MapComponent implements OnInit, OnDestroy {
       .addTo(this.map);
   }
 
+  success(pos) {
+    var crd = pos.coords;
+  
+    console.log('Your current position is:');
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`More or less ${crd.accuracy} meters.`);
+  };
+  
+  error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  };
+
   getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position:Position) => {
-        if (position) {
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
-          this.location=[position.coords.longitude, position.coords.latitude]
-          this.setMap();
-          this.getEventsLocations()
-        }
-      },
-        (error) => console.log(error));
+      var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
+  
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          if (position) {
+            this.lat = position.coords.latitude;
+            this.lng = position.coords.longitude;
+            this.location = [position.coords.longitude, position.coords.latitude];
+            
+            this.setMap(); 
+            this.getEventsLocations();
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+        options
+      );
     } else {
       alert("Geolocation is not supported by this browser.");
     }

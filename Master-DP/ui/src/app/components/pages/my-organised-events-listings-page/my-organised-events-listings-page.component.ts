@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CityService} from "../../../../service/city.service";
-import {TrainerService} from "../../../../service/trainer.service";
 import {Router} from "@angular/router";
 import { EventService } from 'src/service/event.service';
 import { SharedService } from 'src/service/shared.service';

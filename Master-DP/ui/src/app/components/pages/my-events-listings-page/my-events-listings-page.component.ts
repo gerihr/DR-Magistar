@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {CityService} from "../../../../service/city.service";
-import {TrainerService} from "../../../../service/trainer.service";
 import {Router} from "@angular/router";
 import { EMPTY, catchError, delay, of, tap } from 'rxjs';
 import { EventService } from 'src/service/event.service';
@@ -22,7 +21,7 @@ export class MyEventsListingsPageComponent implements OnInit, AfterViewInit {
     isSaved=false;
     eventsList: any;
 
-    constructor(public cityService: CityService, public recService: RecommendationsService , public trainerService: TrainerService, private router: Router, public eventService: EventService, public enumsService:EnumsService) {
+    constructor(public cityService: CityService, public recService: RecommendationsService , private router: Router, public eventService: EventService, public enumsService:EnumsService) {
     }
 
     ngOnInit(): void {
@@ -76,13 +75,6 @@ export class MyEventsListingsPageComponent implements OnInit, AfterViewInit {
 
     reloadPage(): void {
         window.location.reload();
-    }
-
-    toTrainerProfile(userId: number): void {
-        this.trainerService.getTrainerInfoById(userId).subscribe(result => {
-            this.trainerService.currentTrainerInfo = result;
-        });
-        this.router.navigateByUrl('/candidate-details')
     }
 
     removeSavedEvent(event){

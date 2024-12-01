@@ -7,8 +7,7 @@
     </div>
 </div>
 
-<!-- Jobs -->
-<div class="jobs-area ptb-100" *ngIf="eventsList && eventsList.length>0">
+<div class="jobs-area ptb-100" *ngIf="eventsList">
     <div class="container">
         <div class="row">
             <div class="col-lg-9 col-md-12">
@@ -18,7 +17,20 @@
 
                 </mat-tab-group>
 
-                <div>
+                <div class="row" *ngIf="eventsList.length==0">
+                    <div class="col-lg-10 col-md-12">
+                        <div >
+                            <div class="row" >
+                                    <div class="col-lg-12 col-sm-6 col-md-6 text-center" >
+                                        <h3>Все още няма събития за тази категория</h3>
+                                    </div>
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="eventsList.length>0">
                     <div class="row" >
                         <div class="col-lg-12 col-sm-6 col-md-6" *ngFor="let event of eventsList">
                             <div class="job-card" style="cursor: pointer;" *ngIf="showPassed == true ? event.passed == true : event.passed!=true">
@@ -56,7 +68,7 @@
                                 
                                     </div>
                                 </div>
-                                <div *ngIf="!(authService.isOrganiser$ | async) && event.passed!==true">
+                                <div *ngIf="!(authService.isOrganiser$ | async) && event.passed!==true && (authService.isLoggedIng$ | async)">
                                     <button class="bookmark-btn" *ngIf="eventService.isEventSaved(event.id)" (click)="removeSavedEvent(event)"><mat-icon>turned_in</mat-icon></button>
                                     <button class="bookmark-btn" *ngIf="!eventService.isEventSaved(event.id)" (click)="saveRemovedEvent(event)"><mat-icon>turned_in_not</mat-icon></button>
                                 </div>
@@ -133,20 +145,3 @@
     </div>
 </div>
 
-
-<div class="jobs-area ptb-100" *ngIf=" eventsList && eventsList.length==0">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-md-12">
-                <div >
-                    <div class="row" >
-                            <div class="col-lg-12 col-sm-6 col-md-6 text-center" >
-                                <h3>Все още няма събития за тази категория</h3>
-                            </div>
-                
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

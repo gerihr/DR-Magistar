@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {CityService} from "../../../../service/city.service";
-import {TrainerService} from "../../../../service/trainer.service";
 import {StorageService} from "../../../../service/storage.service";
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
@@ -18,7 +17,7 @@ export class MainBannerComponent implements OnInit {
   currentUser: any;
   searchData = new FormControl();
 
-  constructor(public cityService: CityService, public trainerService: TrainerService, public storageService: StorageService, private router: Router) { }
+  constructor(public cityService: CityService, public storageService: StorageService, private router: Router) { }
 
   ngOnInit(): void {
     this.currentUser = this.storageService.getUser();
